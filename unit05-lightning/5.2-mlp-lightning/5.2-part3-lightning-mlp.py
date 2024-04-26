@@ -12,7 +12,6 @@ from watermark import watermark
 class LightningModel(L.LightningModule):
     def __init__(self, model, learning_rate):
         super().__init__()
-
         self.learning_rate = learning_rate
         self.model = model
 

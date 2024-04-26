@@ -79,7 +79,6 @@ class LightningModel(L.LightningModule):
 
 # NEW !!!
 
-
 class MNISTDataModule(L.LightningDataModule):
     def __init__(self, data_dir="./mnist", batch_size=64):
         super().__init__()
@@ -101,7 +100,9 @@ class MNISTDataModule(L.LightningDataModule):
         mnist_full = datasets.MNIST(
             self.data_dir, transform=transforms.ToTensor(), train=True
         )
-        self.mnist_train, self.mnist_val = random_split(mnist_full, [55000, 5000], generator=torch.Generator().manual_seed(42))
+        self.mnist_train, self.mnist_val = random_split(
+            mnist_full, [55000, 5000], generator=torch.Generator().manual_seed(42)
+        )
 
     def train_dataloader(self):
         return DataLoader(
